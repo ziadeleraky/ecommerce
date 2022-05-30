@@ -1,42 +1,19 @@
-const mongoose = require("mongoose");
+const mongoose= require('mongoose')
+const validator = require("validator");
 
-const adminSchema = mongoose.Schema({
-   catagory: {
-      type: String,
-      trim: true,
-      enum: ["man", "woman", "kids"],
-      required: true,
-      lowercase: true,
-   },
-   sub: {
-      type: String,
-      trim: true,
-      enum: ["tshirt", "jeans", "dress"],
-      required: true,
-      lowercase: true,
-   },
-   productTitle: {
-      type: String,
-      trim: true,
-      required: true,
-   },
-   productContent: {
-      type: String,
-      trim: true,
-   },
-   productPrice: {
-      type: Number,
-      trim: true,
-      required: true,
-   },
-   productSize: {
-      type: String,
-      trim: true,
-      enum: ["m", "l", "xl"],
-      required: true,
-      lowercase: true,
-   },
-});
 
-const admin = mongoose.model("Products", adminSchema);
-module.exports = admin;
+const productSchema= new mongoose.Schema({
+   title:{type:String,required:true,unique:true,trim:true},
+   desc:{type:String,required:true,unique:true,trim:true},
+   img:{type:String,required:true,trim:true},
+   categories:{type:Array,required:true,trim:true},
+   size:{type:String,required:true,trim:true},
+   price:{type:String,required:true,trim:true},
+   color:{type:Number,required:true,trim:true},
+
+},
+{timestamps:true}
+);
+
+const product=mongoose.model("product",productSchema)
+module.exports=product

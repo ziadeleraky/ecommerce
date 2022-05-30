@@ -1,5 +1,5 @@
-const userModel = require("../database/models/users.model")
-const catagoryModel=require("../database/models/category.model")
+const userModel = require("../database/models/users.model");
+const catagoryModel=require("../database/models/category.model");
 
   class User{
     static register = async(req,res)=>{
